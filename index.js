@@ -1,37 +1,36 @@
 //Button Pressed
 
-var numberOfDrums = document.querySelectorAll(".drum").length;
+var numberOfDrums = $(".drum").length;
 var arrayPressed = [];
 var timeOfPlay = [];
 var time = 0;
-var keys = ['w','a','s','d','j','k','l'];
+var keys = ['w', 'a', 's', 'd', 'j', 'k', 'l'];
 
 
-for (var i = 0; i < numberOfDrums; i++) {
-  document.querySelectorAll(".drum")[i].addEventListener("click", function() {
+  $(".drum").click(function() {
     var buttonPressed = this.innerHTML;
     makeSounds(buttonPressed);
     animateButton(buttonPressed);
     saveInArray(buttonPressed);
   });
-}
+
 
 //Keyboard Pressed
-document.addEventListener("keydown", function(event) {
+$(document).keypress(function(event) {
   var keyPressed = event.key;
-  if (keys.includes(keyPressed)){
-  makeSounds(keyPressed);
-  animateButton(keyPressed);
-  saveInArray(keyPressed);
-}
+  if (keys.includes(keyPressed)) {
+    makeSounds(keyPressed);
+    animateButton(keyPressed);
+    saveInArray(keyPressed);
+  }
 });
 
-document.querySelector(".btn-outline-success").addEventListener("click", function() {
+$(".btn-outline-success").click(function() {
 
   playAll();
 
 });
-document.querySelector(".btn-outline-danger").addEventListener("click", function() {
+$(".btn-outline-danger").click(function() {
 
   resetArray();
 
@@ -83,14 +82,14 @@ function makeSounds(key) {
 
 function animateButton(key) {
 
-  if (keys.includes(key) ){
-  var activeButton = document.querySelector("." + key);
-  activeButton.classList.toggle("pressed");
-  setTimeout(function() {
-    activeButton.classList.toggle("pressed");
+  if (keys.includes(key)) {
+    var activeButton = $("." + key);
+    activeButton.toggleClass("pressed");
+    setTimeout(function() {
+      activeButton.toggleClass("pressed");
 
-  }, 200)
-}
+    }, 200)
+  }
 }
 
 function saveInArray(key) {
@@ -103,12 +102,12 @@ function resetArray() {
 
 function playAll() {
   if (arrayPressed.length == 0)
-  alert("You should play first.");
-  else{
-  for (var i = 0; i < arrayPressed.length; i++) {
-    playEachKey(i);
+    alert("You should play first.");
+  else {
+    for (var i = 0; i < arrayPressed.length; i++) {
+      playEachKey(i);
+    }
   }
-}
 }
 
 function playEachKey(i) {
