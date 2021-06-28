@@ -50,7 +50,10 @@ background-image: url('images/kick.png');
 }
 
 .set {
-  margin: 10% auto;
+  margin: 3% auto auto 3%;
+}
+.btn-outline-success{
+  margin: 7% auto;
 }
 
 .pressed {

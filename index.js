@@ -1,13 +1,15 @@
 //Button Pressed
 
 var numberOfDrums = document.querySelectorAll(".drum").length;
+var arrayPressed = [];
+
 
 for (var i = 0; i < numberOfDrums; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
     var buttonPressed = this.innerHTML;
     makeSounds(buttonPressed);
     animateButton(buttonPressed);
-
+    saveInArray(buttonPressed);
   });
 }
 
@@ -16,8 +18,20 @@ document.addEventListener("keydown", function(event) {
   var keyPressed = event.key;
   makeSounds(keyPressed);
   animateButton(keyPressed);
+  saveInArray(keyPressed);
+});
+
+document.querySelector(".btn-outline-success").addEventListener("click", function() {
+
+  playAll();
 
 });
+document.querySelector(".btn-outline-danger").addEventListener("click", function() {
+
+  resetArray();
+
+});
+
 
 function makeSounds(key) {
   switch (key) {
@@ -57,18 +71,36 @@ function makeSounds(key) {
       break;
     }
     default:
-      console.log(buttonPressed);
+      console.log(key);
       break;
   }
 }
 
 function animateButton(key){
   var activeButton = document.querySelector("." + key);
-  activeButton.classList.toggle("pressed");
+  activeButton.classList.add("pressed");
   setTimeout(function(){
-    activeButton.classList.toggle("pressed");
+    activeButton.classList.remove("pressed");
 
   }, 200)
+}
 
+function saveInArray(key){
+  arrayPressed.push(key);
+}
+function resetArray(){
+  arrayPressed = [];
+}
 
+function playAll(){
+  console.log(arrayPressed);
+  for (var i=0; i<arrayPressed.length; i++){
+    playEachKey(i);
+  }
+}
+function playEachKey(i){
+  setTimeout(function (){
+    animateButton(arrayPressed[i]);
+    makeSounds(arrayPressed[i]);
+},i*300)
 }
