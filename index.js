@@ -76,31 +76,37 @@ function makeSounds(key) {
   }
 }
 
-function animateButton(key){
+function animateButton(key) {
   var activeButton = document.querySelector("." + key);
   activeButton.classList.add("pressed");
-  setTimeout(function(){
+  setTimeout(function() {
     activeButton.classList.remove("pressed");
 
   }, 200)
 }
 
-function saveInArray(key){
+function saveInArray(key) {
   arrayPressed.push(key);
 }
-function resetArray(){
+
+function resetArray() {
   arrayPressed = [];
 }
 
-function playAll(){
+function playAll() {
   console.log(arrayPressed);
-  for (var i=0; i<arrayPressed.length; i++){
+  if (arrayPressed.length == 0)
+  alert("You should play first.");
+  else{
+  for (var i = 0; i < arrayPressed.length; i++) {
     playEachKey(i);
   }
 }
-function playEachKey(i){
-  setTimeout(function (){
+}
+
+function playEachKey(i) {
+  setTimeout(function() {
     animateButton(arrayPressed[i]);
     makeSounds(arrayPressed[i]);
-},i*300)
+  }, i * 300)
 }
