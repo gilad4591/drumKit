@@ -2,6 +2,9 @@
 
 var numberOfDrums = document.querySelectorAll(".drum").length;
 var arrayPressed = [];
+var timeOfPlay = [];
+var time = 0;
+var keys = ['w','a','s','d','j','k','l'];
 
 
 for (var i = 0; i < numberOfDrums; i++) {
@@ -16,9 +19,11 @@ for (var i = 0; i < numberOfDrums; i++) {
 //Keyboard Pressed
 document.addEventListener("keydown", function(event) {
   var keyPressed = event.key;
+  if (keys.includes(keyPressed)){
   makeSounds(keyPressed);
   animateButton(keyPressed);
   saveInArray(keyPressed);
+}
 });
 
 document.querySelector(".btn-outline-success").addEventListener("click", function() {
@@ -71,18 +76,21 @@ function makeSounds(key) {
       break;
     }
     default:
-      console.log(key);
+      console.log("key not available " + key);
       break;
   }
 }
 
 function animateButton(key) {
+
+  if (keys.includes(key) ){
   var activeButton = document.querySelector("." + key);
   activeButton.classList.toggle("pressed");
   setTimeout(function() {
     activeButton.classList.toggle("pressed");
 
   }, 200)
+}
 }
 
 function saveInArray(key) {
@@ -94,7 +102,6 @@ function resetArray() {
 }
 
 function playAll() {
-  console.log(arrayPressed);
   if (arrayPressed.length == 0)
   alert("You should play first.");
   else{
