@@ -7,12 +7,12 @@ var time = 0;
 var keys = ['w', 'a', 's', 'd', 'j', 'k', 'l'];
 
 
-  $(".drum").click(function() {
-    var buttonPressed = this.innerHTML;
-    makeSounds(buttonPressed);
-    animateButton(buttonPressed);
-    saveInArray(buttonPressed);
-  });
+$(".drum").click(function() {
+  var buttonPressed = this.innerHTML;
+  makeSounds(buttonPressed);
+  animateButton(buttonPressed);
+  saveInArray(buttonPressed);
+});
 
 
 //Keyboard Pressed
