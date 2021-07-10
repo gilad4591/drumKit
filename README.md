@@ -6,6 +6,7 @@ The buttons on screen listen to mouse and keyboard clicks and make sounds of dru
 After several clicks you can play all or reset and start from the beginning.
 I deployed it and host it on FireBase.
 https://drumkit13121312.web.app/
+This website is one of many challenges on Dr Angela yu's course @ Udemy.
 
 ## Developed With:
 * HTML
@@ -13,6 +14,6 @@ https://drumkit13121312.web.app/
 * JavaScript
 * JQuery
 
-
-
+## ScreenShot
+![image](https://user-images.githubusercontent.com/44448238/125160819-b3e69600-e187-11eb-88aa-50581bdfcad3.png)
 
